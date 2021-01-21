@@ -1,0 +1,201 @@
+\section{Starting at the beginning: the natural numbers}
+\subsection{Notes}
+\subsubsection{Theorems}
+\begin{axiom}
+    $0$ is a natural number.
+\end{axiom}
+\begin{axiom}
+    If $n$ is a natural number, then $n\inc$ is also a natural number.
+\end{axiom}
+\begin{axiom}
+    $0$ is not the successor of any natural number; i.e., we have $n\inc \neq 0$ for every natural number $n$.
+\end{axiom}
+\begin{axiom}
+    If $n$, $m$ are natural numbers and $n \neq m$, then $n\inc \neq m\inc$.
+\end{axiom}
+\begin{axiom}[Principle of mathematical induction]
+    Let $P(n)$ be any property pertaining to a natural number $n$. Suppose that $P(0)$ is true, and suppose that whenever $P(n)$ is true, $P(n\inc)$ is also true. Then $P(n)$ is true for every natural number $n$.
+\end{axiom}
+\begin{definition}[Addition of natural numbers]
+    Let $m$ be a natural number. To add zero to $m$, we define $0 + m := m$. Now suppose inductively that we have defined how to add $n$ to $m$. Then we can add $n\inc$ to m by defining $(n\inc) + m := (n + m)\inc$.
+\end{definition}
+\begin{definition}[Ordering of the natural numbers]
+    Let $n$ and $m$ be natural numbers. We say that $n$ is greater than or equal to $m$, and write $n \geq m$ or $m \leq n$, iff we have $n = m + a$ for some natural number $a$. We say that $n$ is strictly greater than $m$, and write $n > m$ or $m < n$, iff $n \geq m$ and $n \neq m$.
+\end{definition}
+\subsubsection{Remarks}
+Axiom 2.5 and the concept of the vacuous truth need further consideration.
+
+\subsection{Practices}
+\begin{quote}
+    Notice that we can prove easily, using Axioms 2.1, 2.2, and induction (Axiom 2.5), that the sum of two natural numbers is again a natural number (why?).\footnote{24}
+\end{quote}
+\begin{proof}
+    We use induction on $n$. $0+m=m$ is a natural number. Suppose inductively that $n+m$ is a natural number. Then $(n\inc) + m = (n+m)\inc$ is also a natural number. 
+\end{proof}
+
+\begin{quote}
+    As a particular corollary of Lemma 2.2.2 and Lemma 2.2.3 we see that $n\inc = n + 1$ (why?).\footnote{26}
+\end{quote}
+\begin{proof}
+    % We use induction. The base case $0\inc = 0+1$ follows as both sides equal $1$. Suppose inductively that $n\inc = n+1$. We have to prove that $(n\inc)\inc = (n\inc)+1$. The right side 
+    % \begin{align*}
+    %     (n\inc)+1&=(n\inc)+(0\inc)\\
+    %     &=\br{\br{n\inc}+0}\inc && \text{(Lemma 2.2.3)}\\
+    %     &=\br{n\inc}\inc, && \text{(Lemma 2.2.2)}
+    % \end{align*}
+    % which is equal to the left side.
+    \begin{align*}
+        n\inc &= (n+0)\inc && \text{(Lemma 2.2.2)}\\
+        &=n + (0\inc) && \text{(Lemma 2.2.3)}\\
+        &=n + 1. &&\qedhere
+    \end{align*}
+\end{proof}
+
+\paragraph{Exercise 2.2.1 (Addition is associative)}For any natural numbers $a,b,c$, we have $(a+b)+c=a+(b+c)$.
+\begin{proof}
+    We use induction on $b$. The base case $(a+0)+c=a+(0+c)$ follows as both sides equal $a+c$. Suppose inductively that $(a+b)+c=a+(b+c)$. We have to prove that $[a+(b\inc)]+c=a+[(b\inc)+c]$. The left side 
+\begin{align*}
+    [a+(b\inc)]+c&= [(a+b)\inc]+c\\
+    &= [(a+b)+c]\inc.
+\end{align*}
+The right side
+\begin{align*}
+    a+[(b\inc)+c]&= a+[(b\inc)+c]\\
+    &= [a+(b+c)]\inc,
+\end{align*}
+    which is equal to the left side by the inductive hypothesis.
+\end{proof}
+
+\paragraph{Exercise 2.2.2}Let $a$ be a positive number. Then there exists exactly one natural number $b$ such that $b\inc = a$.
+\begin{proof}
+    (Existence) We use induction on $a$. The base case follows as $0$ is not a positive number. Suppose inductively that $b\inc = a$. Then $(b\inc)\inc = a\inc$, where $b\inc$ is a natural number.
+    (Uniqueness) Suppose for the sake of contradiction that $b$ and $c$ are different natural numbers such that $b\inc = a$ and $c\inc =a$. Because $b \neq c$, $b\inc \neq c\inc$. There is a contradiction that $b\inc = c\inc$.
+\end{proof}
+
+\paragraph{Exercise 2.2.3 (Basic properties of order for natural numbers)}Let $a, b, c$ be natural numbers. Then
+\begin{enumerate}
+    \item (Order is reflexive) $a \geq a$.
+\end{enumerate}
+\begin{proof}
+    $a=a+0$.
+\end{proof}
+\begin{enumerate}[resume]
+    \item (Order is transitive) If $a\geq b$ and $b\geq c$, then $a \geq c$.
+\end{enumerate}
+\begin{proof}
+    $a=b+m$ and $b=c+n$ for some natural numbers $m,n$. Then $a=(c+n)+m=c+(n+m)$, where $n+m$ is a natural number.
+\end{proof}
+\begin{enumerate}[resume]
+    \item (Order is anti-symmetric) If $a \geq b$ and $b \geq a$, then $a = b$.
+\end{enumerate}
+\begin{proof}
+    $a=b+m$ and $b=a+n$ for some natural numbers $m,n$. Then $a=(a+n)+m=a+(n+m)$, which leads to that $0=n+m$. It follows that $n=m=0$. Therefore, $a=b+0=b$.
+\end{proof}
+\begin{enumerate}[resume]
+    \item (Addition preserves order) $a\geq b$ if and only if $a+c\geq b+c$.
+\end{enumerate}
+\begin{proof}
+    (1) If $a\geq b$, $a=b+m$ for some natural number $m$. Then $a+c=(b+m)+c=(b+c)+m$, which means that $a+c\geq b+c$. (2) If $a+c\geq b+c$, $a+c = b+c + n$ for some natural number $n$. It follows that $a+c=b+n+c$, and thus that $a=b+n$, which means that $a\geq b$.
+\end{proof}
+\begin{enumerate}[resume]
+    \item $a<b$ if and only if $a\inc \leq b$.
+\end{enumerate}
+\begin{proof}
+    (1) If $a<b$, $a+m=b$ for some natural number $m$ and $a\neq b$. Suppose for the sake of contradiction that $m=0$. It follows that $a=b$, which contradicts that $a\neq b$. Then $m\neq 0$, which means it is a positive natural number. Thus, $m=n\inc$ for some natural number $n$. It follows that $a+n\inc=b$, which means that $(a+n)\inc=b$, which means that $a\inc + n = b$. Thus, $a\inc \leq b$.
+    (2) If $a\inc \leq b$, then $(a\inc)+m=b$ for some natural number $m$. Therefore, $(a+m)\inc=b$, which means that $a+m\inc=b$. It follows that $a\leq b$. Now we must prove that $a \neq b$. Suppose for the sake of contradiction that $a=b$, then $a+m\inc=a$, which implies that $m\inc=0$, which contradicts that $0$ is not the successor of any natural number.
+\end{proof}
+\begin{enumerate}[resume]
+    \item $a<b$ if and only if $b=a+d$ for some positive number $d$.
+\end{enumerate}
+\begin{proof}
+    We only have to prove that $a\inc \leq b$ if and only if $b=a+d$ for some positive number $d$ by (e).
+    (1) If $a\inc \leq b$, then $a\inc + m = b$ for some natural number $m$. Therefore, $a + d = b$, where we let $d:=m\inc$. Suppose for the sake of contradiction that d is not positive, which means that $d=0$, which contradicts that $0$ is not the successor of any natural number. Thus, d is a positive natural number.
+    (2) If $b=a+d$ for some positive number $d$, then $b=a+n\inc$ for some natural number $n$. It follows that $a\inc + n =b$, which implies that $a\inc \leq b$.
+\end{proof}
+
+\paragraph{Exercise 2.2.4.}
+\begin{quote}
+    [We] have $0\leq b$ for all $b$ (why?).
+\end{quote}
+\begin{proof}
+    $0+b=b$.
+\end{proof}
+\begin{quote}
+    If $a>b$, then $a\inc >b$ (why?). If $a=b$, then $a\inc >b$ (why?).
+\end{quote}
+\begin{proof}
+    $a=b+m$ for some $m$. Then $a\inc=a+1=b+m+1=b+m\inc$. Therefore $a\inc >b$.
+\end{proof}
+
+\paragraph{Exercise 2.2.5. (Strong principle of induction)}Let $m_0$ be a natural number, and let $P(m)$ be a property pertaining to an arbitrary natural number $m$. Suppose that for each $m \geq m_0$, we have the following implication: if $P(m')$ is true for all natural numbers $m_0 \leq m' < m$, then $P(m)$ is also true. (In particular, this means that $P(m_0)$ is true, since in this case the hypothesis is vacuous.) Then we can conclude that $P(m)$ is true for all natural numbers $m \geq m_0$.\footnote{Done with reference to \href{https://zhuanlan.zhihu.com/p/70295136}{Proposition 2.2.14 Strong principle of induction}.}
+\begin{proof}
+    Define $Q(m)$ to be the property for any arbitrary natural number $m$ that $P(m')$ is true for all $m_0 \leq m' < m$. For each $m \geq m_0$, if $Q(m)$ is true, $P(m)$ is also true.
+
+    We first prove that $Q(m)$ is true for all $m\geq m_0$. We use induction on $m$. In the base case $m=0$, we consider three cases
+    \begin{enumerate}[label=(\arabic*)]
+        \item $m_0<0$. $m_0+k=0$ for some $k$ and $m_0\neq 0$. But because $m_0+k=0$, $m_0=0$, which is a contradiction. Then $m_0$ cannot be less than $0$.
+        \item $m_0=0$ or $m_0>0$. $m_0 \leq m' < m$, therefore $m'+l=m=0$ for some $l$. Likewise, there is a contradiction that $l$ cannot be less than $0$, so $Q(0)$ is vacuously true.
+    \end{enumerate}
+
+    We then suppose inductively that the case $m=n$ holds. Consider the case $m=n\inc$. We consider three cases
+    \begin{enumerate}[label=(\arabic*)]
+        \item $m_0<n\inc$. We consider three cases
+            \begin{enumerate}[label=(\roman*)]
+                \item $m'<n$. Because $Q(n)$ is true, $P(m')$ is true for all $m_0 \leq m' < n$. Thus, $P(m')$ is true for $m'<n$.
+                \item $m'=n$. Because $Q(n)$ is true, $P(n)$ is true according to the inductive hypothesis. Thus, $P(n)$ is true for $m'=n$.
+                \item $m'>n$. Because $m'<n\inc$, $m'+k=n\inc$ for some $k$ and $m'\neq n\inc$. Suppose for the sake of contradiction that $k=0$, then $m'=n\inc$, a contradiction. Thus, $k$ is positive, so $k=l\inc$ for some $l$. We have $m'+l\inc=n\inc$, which means $m'+l=n$, which means $m'\leq n$, which contradicts that $m'>n$. Thus, $P(n)$ is vacuously true for $m'>n$.
+            \end{enumerate}
+            Therefore, $P(m')$ is true for any $m_0 \leq m'<n\inc$, i.e., $Q(n\inc)$ is true for $m_0<n\inc$.
+        \item $m_0=n\inc$. Then, $n\inc\leq m'< n\inc$, i.e., we have $n\inc \neq m'$, $m'\geq n\inc$ and $n\inc \geq m'$. It follows that $n\inc = m'$, which is a contradiction. Thus, $Q(n\inc)$ is vacuously true for $m_0=n\inc$.
+        \item $m_0>n\inc$. Then, $m_0 \leq m' < n\inc <m_0$, which means that $m_0\leq m' < m_0$. Likewise, there is no $m'$ such that this case exists. Thus, $Q(n\inc)$ is vacuously true for $m_0>n\inc$.
+    \end{enumerate}
+    Combining the above cases, $Q(n\inc)$ is true when $Q(n)$ is true. This closes the induction.
+
+    Because $Q(m)$ is true for all $m\geq m_0$, $P(m)$ is also true for all $m\geq m_0$.
+\end{proof}
+
+\paragraph{Exercise 2.2.6.}Let $n$ be a natural number, and let $P(m)$ be a property pertaining to the natural numbers such that whenever $P (m\inc)$ is true, then $P (m)$ is true. Suppose that $P(n)$ is also true. Prove that $P(m)$ is true for all natural numbers $m \leq n$; this is known as the principle of backwards induction.
+\begin{proof}
+    We use induction on $n$. The base case is $n=0$. Because $m\leq n$, $m+k=n=0$ for some natural number $k$. This means that $m=0=n$, which means that $P(m)$ is true.
+
+    We assume inductively that the case $n=l$ holds for some natural number $l$, then consider the case $n=l\inc$. From the inductive hypothesis, $P(m)$ is true for all natural numbers $m\leq l$. $m\leq l$ iff $m+a=l$ for some natural number $a$, iff $m+a\inc=l\inc$. 
+
+    (1) Suppose for the sake of contradiction that $m=l\inc$, so $a\inc=0$. But $a\inc \neq 0$ as $0$ is not the successor of any natural number. So $m<l\inc$. (2) If $m<l\inc$, likewise, then $m+a\inc=l\inc$.
+
+    Therefore, $m+a\inc=l\inc$ iff $m<l\inc$. This means that $P(m)$ is true for all natural numbers $m<l\inc$ if $P(l)$ is true. 
+
+    Because $P(l\inc)$ is true, $P(l)$ is true from the inductive hypothesis. Thus, $P(m)$ is true for all natural numbers $m<l\inc$. Combining with that $P(l\inc)$ is true, $P(m)$ is true for all natural numbers $m \leq l\inc$.
+\end{proof}
+
+\paragraph{Exercise 2.3.1. (Multiplication is commutative)}
+\begin{proof}
+    We use induction on $n$. The base case is $0\times m=m\times 0$. The left side equals $0$. We use another induction on $m$ to show that the right side also equals $0$. The base case $0\times 0=0$ by definition. Suppose inductively that $k\times 0 =0$ for some $k$. Then $(k\inc)\times 0=k\times 0+0=0+0=0$. Thus, the second induction is closed; the base case of the first induction is true.
+
+    We suppose inductively that $0\times l = l \times 0$ for some $l$. Thus, $l\times 0=0$. Likewise, $(l\inc)\times 0 = 0$. Because $0\times (l\inc)$, $0\times (l\inc) = (l\inc) \times 0$.
+\end{proof}
+
+\paragraph{Exercise 2.3.2. (Positive natural numbers have no zero divisors)}
+\begin{proof}
+    (1) If one of $n,m$ is equal to $0$, then, without loss of generality, we let $m=0$, so $nm=n0=0$.
+    (2) If $nm=0$, we suppose for the sake of contradiction that none of $n,m$ is $0$. That is, $n=l\inc$ and $m=k\inc$ for some natural numbers $l,k$. $nm=(l\inc)(k\inc)=k(l\inc)+(l\inc)=0$. Thus, $l\inc=0$, which is a contradiction.
+\end{proof}
+
+\paragraph{Exercise 2.3.3. (Multiplication is associative)}
+\begin{proof}
+    We use induction on $b$. The base case $(a0)c=a(0c)$ holds as both sides equal $0$. We suppose inductively that $(ab)c=a(bc)$, and need to prove that $(a(b\inc))c=a((b\inc)c)$. The left side equals $(ab+a)c=abc+ac$; the right side equals $a(bc+c)=abc+ac$.
+\end{proof}
+
+\paragraph{Exercise 2.3.4.}Prove the identity $(a + b)^2 = a^2 + 2ab + b^2$ for all natural numbers $a, b$.
+\begin{proof}
+    The left side equals $(a+b)(a+b)=(a+b)a+(a+b)b=aa+ba+ab+bb$. The right side equals $aa+ab+ab+bb$.
+\end{proof}
+
+\paragraph{Exercise 2.3.5. (Euclidean algorithm)}Let $n$ be a natural number, and let $q$ be a positive number. Then there exist natural numbers $m,r$ such that $0 \leq r < q$ and $n = mq + r$.
+\begin{proof}
+    We use induction on $n$. The base case $n=0$ holds as we can find $m=0$, $r=0$ such that $0=0q+0$. We suppose inductively that $n = mq + r$, and want to prove that $n\inc=m'q+r'$ for some $m',r'$. From the inductive hypothesis, $n\inc=mq+r\inc$. We discuss the cases
+    \begin{enumerate}[label=(\arabic*)]
+        \item $r\inc<q$. Then $m'=m$, $r'=r\inc$ satisfies that $n\inc=m'q+r'$.
+        \item $r\inc = q$. Then $n\inc=mq+r\inc=mq+q=(m\inc)q+0$. We have $m'=m\inc$ and $r'=0$ satisfying this case.
+        \item $r\inc > q$. Then $r>q$. But $r<q$, so $n\inc=m'q+r'$ is true vacuously.\qedhere
+    \end{enumerate}
+\end{proof}
