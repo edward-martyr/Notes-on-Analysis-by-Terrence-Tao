@@ -2,10 +2,13 @@
 % !TEX program = pdflatex
 
 \documentclass[12pt]{article}
+
+
 \usepackage[a4paper]{geometry}
+\usepackage{titlesec}
+\newcommand{\sectionbreak}{\clearpage}
 
 % \usepackage{bropd}
-
 \usepackage{enumitem}
     \setenumerate{label=(\alph*)}
 \usepackage{amsmath,amsthm,amssymb}
@@ -13,22 +16,26 @@
     \newtheorem{definition}{Definition}
     \numberwithin{axiom}{section}
     \numberwithin{definition}{section}
-
 \newcommand{\inc}{{+}{\mkern-3mu}{+}}%
 \mathchardef\ordinarycolon\mathcode`\:
-\mathcode`\:=\string"8000
-\begingroup \catcode`\:=\active
-  \gdef:{\mathrel{\mathop\ordinarycolon}}
-\endgroup%
+    \mathcode`\:=\string"8000
+    \begingroup \catcode`\:=\active
+    \gdef:{\mathrel{\mathop\ordinarycolon}}
+    \endgroup%
 
 \usepackage{hyperref}
 \usepackage{microtype}
 
 \begin{document}
+
 \title{Notes on \textit{Analysis} by Terrence Tao}
 \author{Yuanhao Chen}
-\maketitle
+\clearpage\maketitle
+\thispagestyle{empty}
 
+\renewcommand\thesection{\Alph{section}}
+\input{A.tex}
+\renewcommand\thesection{\arabic{section}}
 \setcounter{section}{1}
 \input{2.tex}
 \input{3.tex}
