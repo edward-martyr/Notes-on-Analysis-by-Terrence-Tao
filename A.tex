@@ -1,11 +1,27 @@
 \section{Appendix: the basics of mathematical logic}
 \subsection{Notes}
 \subsubsection{Theorems}
+\begin{axiom}[Reflexive axiom]
+    Given any object $x$, we have $x = x$.
+\end{axiom}
+\begin{axiom}[Symmetry axiom]
+    Given any two objects $x$ and $y$ of the same
+type, if $x = y$, then $y = x$.
+\end{axiom}
+\begin{axiom}[Transitive axiom]
+    Given any three objects $x, y, z$ of the same
+type, if $x = y$ and $y = z$, then $x = z$.
+\end{axiom}
+\begin{axiom}[Substitution axiom]
+    Given any two objects $x$ and $y$ of the same type, if $x = y$, then $f(x) = f(y)$ for all functions or operations $f$. Similarly, for any property $P(x)$ depending on $x$, if $x = y$, then $P(x)$ and $P(y)$ are equivalent statements.    
+\end{axiom}
 
 \subsubsection{Remarks}
 I started reading Appendix A realising my lack of sophistication with Logic after finishing Chapter 2.
 
 Discussing cases in a proof is a common example of using vacuously true implications for a non-trivial result, e.g., if we want to prove that $P(x)$ is true, we can prove the implications that if $x$ is even, then $P(x)$ is true and that if $x$ is odd, then $P(x)$ is true, even if one implication must have a false hypothesis because $x$ cannot be both even and false and thus be vacuous.
+
+Equality is also worth reviewing. I was indecisive whether it was legitimate to add a number to both sides of an equality when doing the exercises in Chapter 2. It actually follows the \emph{substitution axiom} of equality.
 
 \subsection{Practices}
 \paragraph{Exercise A.1.1.} Both $X$ and $Y$ are true, or both are false.
@@ -20,3 +36,29 @@ Discussing cases in a proof is a common example of using vacuously true implicat
 
 \paragraph{Exercise A.1.6.} Yes, likewise.
 
+\paragraph{Exercise A.5.1.}
+\begin{enumerate}
+    \item $\Leftrightarrow \forall (x,y) \in (\mathbb{R}^+)^2  : y^2=x$, which is a false statement (e.g. $x=1,y=2$). 
+    \item $\Leftrightarrow \exists x \in \mathbb{R}^+ \quad \forall y \in \mathbb{R}^+ : y^2=x$, which is a false statement. \begin{proof}
+        For the sake of contradiction, suppose that the statement holds for some $x \in \mathbb{R}^+$; so $y^2=x$. But for all $y \in \mathbb{R}^+$, $y^2=x$, so $(y+1)^2=x$ where $y+1 \in \mathbb{R}^+$; so $y^2=x-(2y+1)=x$; so $2y+1=0$. But $2y+1$ is positive, so there is a contradiction.
+    \end{proof}
+    \item $\Leftrightarrow \exists (x,y) \in (\mathbb{R}^+)^2  : y^2=x$, which is a true statement (e.g. $x=1,y=1$). 
+    \item $\Leftrightarrow \forall y \in \mathbb{R}^+ \quad \exists x \in \mathbb{R}^+ : y^2=x$, which is a true statement. \begin{proof}
+        Let $a := {y}^2$, so $a\in \mathbb{R}^+$ because $y \in \mathbb{R}^+$. Thus, there exists some $x=a\in \mathbb{R}^+$ which satisfies the statement.
+    \end{proof}
+    \item $\Leftrightarrow \exists y \in \mathbb{R}^+ \quad \forall x \in \mathbb{R}^+ : y^2=x$, which is a false statement (likewise).
+\end{enumerate}
+
+\paragraph{Exercise A.7.1.}
+\begin{proof}
+    Given $a=b$ and $c = d$,
+    \begin{align*}
+        \text{we have } {} &b=a && \text{(Symmetry axiom)}\\
+        \Rightarrow {} &b+c=a+c && \text{(Substitution axiom)}\\
+        \text{but } {} &a=a && \text{(Reflexive axiom)}\\
+        \Rightarrow {} &a+c=a+c && \text{(Substitution axiom)}\\
+        \Rightarrow {} &a+c=a+d && \text{(Substitution axiom)}\\
+        \text{so } {} &b+c=a+d && \text{(Transitive axiom)}\\
+        \Rightarrow {} &a+d=b+c. && \text{(Symmetry axiom)} \qedhere
+    \end{align*}
+\end{proof}
