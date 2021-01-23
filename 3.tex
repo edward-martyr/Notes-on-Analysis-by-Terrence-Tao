@@ -1,7 +1,36 @@
 \section{Set Theory}
 \subsection{Notes}
 \subsubsection{Theorems}
+\begin{axiom}[Sets are objects]
+    If $A$ is a set, then $A$ is also an object.
+\end{axiom}
+\begin{axiom}[Empty set]
+    There exists a set $\emptyset$, known as the empty set, which contains no elements, i.e., for every object $x$ we have $x \notin \emptyset$.
+\end{axiom}
+\begin{axiom}[Singleton sets and pair sets]
+    If $a$ is an object, then there exists a set $\set{a}$ whose only element is $a$, i.e., for every object $y$, we have $y\in{a}$ if and only if $y=a$; we refer to $\set{a}$ as the singleton set whose element is $a$. Furthermore, if $a$ and $b$ are objects, then there exists a set $\set{a, b}$ whose only elements are $a$ and $b$; i.e., for every object $y$, we have $y \in \set{a, b}$ if and only if $y = a$ or $y = b$; we refer to this set as the pair set formed by $a$ and $b$.
+\end{axiom}
+\begin{axiom}[Pairwise union]
+    Given any two sets $A$, $B$, there exists a set $A \cup B$ such that \[x\in A\cup B \iff (x\in A \text{ or } x\in B).\]
+\end{axiom}
+\begin{axiom}[Axiom of specification]
+    Let $A$ be a set, then for any object $y$, \[y\in \set{x\in A: P(x)} \iff (y\in A \text{ and } P(y) \text{ is true}).\] 
+\end{axiom}
 
 \subsubsection{Remarks}
+Some axioms listed here are redundant: we only need one axiom between the singleton sets and the pair sets axioms.
 
 \subsection{Practices}
+\begin{quote}
+    Note that there can only be one empty set; if there were two sets $\emptyset$ and $\emptyset'$ which were both empty, then by Definition 3.1.4 they would be equal to each other (why?).
+\end{quote}
+\begin{proof}
+    We shall prove that for every object $x \in \emptyset$ we have $x \in \emptyset'$, but this is vacuously true because for every object $x$ we have $x \notin \emptyset$. Likewise, it is vacuously true that for every object $x \in \emptyset'$ we have $x \in \emptyset$. Thus, $\emptyset = \emptyset'$.
+\end{proof}
+
+\begin{quote}
+    If $A$, $B$, $A'$ are sets, and $A$ is equal to $A'$, then $A \cup B$ is equal to $A' \cup B$ (why? [\ldots]).
+\end{quote}
+\begin{proof}
+    $A=A'$ implies that for every object $x$, $x\in A$ iff $x\in A'$. Thus, \[(x\in A \text{ or } x\in B) \iff (x\in A' \text{ or } x\in B).\] This is equivalent to that \[x\in A\cup B \iff x\in A'\cup B,\] which implies that $A\cup B = A'\cup B$.
+\end{proof}

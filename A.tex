@@ -26,7 +26,7 @@ Equality is also worth reviewing. I was indecisive whether it was legitimate to 
 \subsection{Practices}
 \paragraph{Exercise A.1.1.} Both $X$ and $Y$ are true, or both are false.
 
-\paragraph{Exercise A.1.2.} Either X is true, or Y is true, but not both.
+\paragraph{Exercise A.1.2.} Either $X$ is true, or $Y$ is true, but not both.
 
 \paragraph{Exercise A.1.3.} Yes, because they are \emph{equally} true or \emph{equally} false, and they can only be true or false.
 
@@ -38,15 +38,15 @@ Equality is also worth reviewing. I was indecisive whether it was legitimate to 
 
 \paragraph{Exercise A.5.1.}
 \begin{enumerate}
-    \item $\Leftrightarrow \forall (x,y) \in (\mathbb{R}^+)^2  : y^2=x$, which is a false statement (e.g. $x=1,y=2$). 
-    \item $\Leftrightarrow \exists x \in \mathbb{R}^+ \quad \forall y \in \mathbb{R}^+ : y^2=x$, which is a false statement. \begin{proof}
+    \item $\iff \forall (x,y) \in (\mathbb{R}^+)^2  : y^2=x$, which is a false statement (e.g. $x=1,y=2$). 
+    \item $\iff \exists x \in \mathbb{R}^+ \quad \forall y \in \mathbb{R}^+ : y^2=x$, which is a false statement. \begin{proof}
         For the sake of contradiction, suppose that the statement holds for some $x \in \mathbb{R}^+$; so $y^2=x$. But for all $y \in \mathbb{R}^+$, $y^2=x$, so $(y+1)^2=x$ where $y+1 \in \mathbb{R}^+$; so $y^2=x-(2y+1)=x$; so $2y+1=0$. But $2y+1$ is positive, so there is a contradiction.
     \end{proof}
-    \item $\Leftrightarrow \exists (x,y) \in (\mathbb{R}^+)^2  : y^2=x$, which is a true statement (e.g. $x=1,y=1$). 
-    \item $\Leftrightarrow \forall y \in \mathbb{R}^+ \quad \exists x \in \mathbb{R}^+ : y^2=x$, which is a true statement. \begin{proof}
+    \item $\iff \exists (x,y) \in (\mathbb{R}^+)^2  : y^2=x$, which is a true statement (e.g. $x=1,y=1$). 
+    \item $\iff \forall y \in \mathbb{R}^+ \quad \exists x \in \mathbb{R}^+ : y^2=x$, which is a true statement. \begin{proof}
         Let $a := {y}^2$, so $a\in \mathbb{R}^+$ because $y \in \mathbb{R}^+$. Thus, there exists some $x=a\in \mathbb{R}^+$ which satisfies the statement.
     \end{proof}
-    \item $\Leftrightarrow \exists y \in \mathbb{R}^+ \quad \forall x \in \mathbb{R}^+ : y^2=x$, which is a false statement (likewise).
+    \item $\iff \exists y \in \mathbb{R}^+ \quad \forall x \in \mathbb{R}^+ : y^2=x$, which is a false statement (likewise).
 \end{enumerate}
 
 \paragraph{Exercise A.7.1.}
@@ -54,11 +54,11 @@ Equality is also worth reviewing. I was indecisive whether it was legitimate to 
     Given $a=b$ and $c = d$,
     \begin{align*}
         \text{we have } {} &b=a && \text{(Symmetry axiom)}\\
-        \Rightarrow {} &b+c=a+c && \text{(Substitution axiom)}\\
+        \implies {} &b+c=a+c && \text{(Substitution axiom)}\\
         \text{but } {} &a=a && \text{(Reflexive axiom)}\\
-        \Rightarrow {} &a+c=a+c && \text{(Substitution axiom)}\\
-        \Rightarrow {} &a+c=a+d && \text{(Substitution axiom)}\\
+        \implies {} &a+c=a+c && \text{(Substitution axiom)}\\
+        \implies {} &a+c=a+d && \text{(Substitution axiom)}\\
         \text{so } {} &b+c=a+d && \text{(Transitive axiom)}\\
-        \Rightarrow {} &a+d=b+c. && \text{(Symmetry axiom)} \qedhere
+        \implies {} &a+d=b+c. && \text{(Symmetry axiom)} \qedhere
     \end{align*}
 \end{proof}
