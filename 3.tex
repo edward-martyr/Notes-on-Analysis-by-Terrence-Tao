@@ -11,10 +11,10 @@
     If $a$ is an object, then there exists a set $\set{a}$, such that for every object $y$, we have $y\in{a}$ if and only if $y=a$; we refer to $\set{a}$ as the singleton set whose element is $a$. Furthermore, if $a$ and $b$ are objects, then there exists a set $\set{a, b}$, such that for every object $y$, we have $y \in \set{a, b}$ if and only if $y = a$ or $y = b$; we refer to this set as the pair set formed by $a$ and $b$.
 \end{axiom}
 \begin{axiom}[Pairwise union]
-    Given any two sets $A$, $B$, there exists a set $A \cup B$ such that \[x\in A\cup B \iff (x\in A \text{ or } x\in B).\]
+    Given any two sets $A$, $B$, there exists a set $A \cup B$ such that \[x\in A\cup B \iff (x\in A \lor x\in B).\]
 \end{axiom}
 \begin{axiom}[Axiom of specification]
-    Let $A$ be a set, then for any object $y$, \[y\in \Set{x\in A | P(x)} \iff (y\in A \text{ and } P(y) \text{ is true}).\] 
+    Let $A$ be a set, then for any object $y$, \[y\in \Set{x\in A | P(x)} \iff (y\in A \land P(y) \text{ is true}).\] 
 \end{axiom}
 \begin{axiom}[Replacement]
     Let $A$ be a set. For any object $x \in A$, and any object $y$, suppose we have a statement $P(x,y)$ pertaining to $x$ and $y$, such that for each $x \in A$ there is at most one $y$ for which $P(x,y)$ is true. Then there exists a set $\Set{y | P (x, y) \text{ is true for some } x \in A}$, such that for any object $z$, \[z \in \Set{y | P(x,y)\text{ is true for some }x \in A} \iff P(x,z)\text{ is true for some }x \in A.\]
@@ -38,7 +38,7 @@ Some axioms listed here are redundant: we only need one axiom between the single
     If $A$, $B$, $A'$ are sets, and $A$ is equal to $A'$, then $A \cup B$ is equal to $A' \cup B$ (why? [\ldots]).
 \end{quote}
 \begin{proof}
-    $A=A'$ implies that for every object $x$, $x\in A$ iff $x\in A'$. Thus, \[(x\in A \text{ or } x\in B) \iff (x\in A' \text{ or } x\in B).\] This is equivalent to that \[x\in A\cup B \iff x\in A'\cup B,\] which implies that $A\cup B = A'\cup B$.
+    $A=A'$ implies that for every object $x$, $x\in A$ iff $x\in A'$. Thus, \[(x\in A \lor x\in B) \iff (x\in A' \lor x\in B).\] This is equivalent to that \[x\in A\cup B \iff x\in A'\cup B,\] which implies that $A\cup B = A'\cup B$.
 \end{proof}
 
 \paragraph{Exercise 3.1.1. (*Equality of sets is an equivalent class)}
@@ -56,10 +56,10 @@ Some axioms listed here are redundant: we only need one axiom between the single
 
 \paragraph{Exercise 3.1.3. (*The union operation)}
 \begin{proof}
-    By Axiom 3.4, we have \[x\in A\cup B \iff (x\in A \text{ or } x\in B)\] and \[x\in B\cup A \iff (x\in B \text{ or } x\in A),\] where \[(x\in A \text{ or } x\in B) \iff (x\in B \text{ or } x\in A).\] Thus, $x\in A\cup B$ iff $x\in B\cup A$, which implies that $A\cup B=B\cup A$.
+    By Axiom 3.4, we have \[x\in A\cup B \iff (x\in A \lor x\in B)\] and \[x\in B\cup A \iff (x\in B \lor x\in A),\] where \[(x\in A \lor x\in B) \iff (x\in B \lor x\in A).\] Thus, $x\in A\cup B$ iff $x\in B\cup A$, which implies that $A\cup B=B\cup A$.
 \end{proof}
 \begin{proof}
-    Because $x\in \emptyset$ is false for any $x$, we have \[(x\in A \text{ or } x\in A) \iff (x\in A \text{ or } x\in \emptyset) \iff (x\in \emptyset \text{ or } x\in A) \iff x\in A. \qedhere\]
+    Because $x\in \emptyset$ is false for any $x$, we have \[(x\in A \lor x\in A) \iff (x\in A \lor x\in \emptyset) \iff (x\in \emptyset \lor x\in A) \iff x\in A. \qedhere\]
 \end{proof}
 
 \paragraph{Exercise 3.1.4.}
@@ -75,13 +75,13 @@ Some axioms listed here are redundant: we only need one axiom between the single
     We have $A\subseteq B$ if and only if \[x\in A \implies x\in B.\] We also have 
     \begin{align*}
         A \cup B = B &\iff (x\in A \cup B \iff x \in B) \\
-        &\iff (x\in A \text{ or }x\in B \iff x \in B) \\
+        &\iff (x\in A \lor x\in B \iff x \in B) \\
         &\iff (x\in A \implies x\in B).
     \end{align*}
     We also have 
     \begin{align*}
         A \cap B = A &\iff (x\in A \cap B \iff x \in A) \\
-        &\iff (x\in A \text{ and }x\in B \iff x \in A) \\
+        &\iff (x\in A \land x\in B \iff x \in A) \\
         &\iff (x\in A \implies x\in B).\qedhere
     \end{align*}
 \end{proof}
@@ -93,10 +93,10 @@ Some axioms listed here are redundant: we only need one axiom between the single
         \begin{align*}
             &A \cap (B \cup C) = (A \cap B) \cup (A \cap C) 
             \\\iff& \big(x\in A \cap (B \cup C) \iff x\in (A \cap B) \cup (A \cap C) \big) \text{ for any object $x$}
-            \\\iff& (x\in A \text{ and } x \in B \cup C \iff x \in A \cap B \text{ or } x \in A \cap C)
-            \\\iff& \big(x\in A \text{ and } (x \in B \text{ or } x \in C) \iff (x \in A \text{ and } x \in B) \text{ or } (x \in A \text{ and } x \in C) \big)
-            \\\iff& \big( (x \in A \text{ and } x \in B) \text{ or } (x \in A \text{ and } x \in C) 
-            \\ &\qquad\iff (x \in A \text{ and } x \in B) \text{ or } (x \in A \text{ and } x \in C) \big). \qedhere
+            \\\iff& (x\in A \land x \in B \cup C \iff x \in A \cap B \lor x \in A \cap C)
+            \\\iff& \big(x\in A \land (x \in B \lor x \in C) \iff (x \in A \land x \in B) \lor (x \in A \land x \in C) \big)
+            \\\iff& \big( (x \in A \land x \in B) \lor (x \in A \land x \in C) 
+            \\ &\qquad\iff (x \in A \land x \in B) \lor (x \in A \land x \in C) \big). \qedhere
         \end{align*}
     \end{proof}
     \item (Partition).
@@ -105,16 +105,16 @@ Some axioms listed here are redundant: we only need one axiom between the single
         \begin{align*}
             & A \cup (X \backslash A) = X
             \\\iff& \big( x \in A \cup (X \backslash A) \iff x \in X \big) \text{ for any object $x$}
-            \\\iff& ( x \in A \text{ or } x \in (X \backslash A) \iff x \in X )
-            \\\iff& \big( x \in A \text{ or } (x \in X \text{ and } x \notin A) \iff x \in X \big)
-            \\\iff& \big( (x \in A \text{ or } x \in X) \text{ and } (x \in A \text{ or } x \notin A) \iff x \in X \big)
-            \\\iff& ( x \in A \text{ or } x \in X \iff x \in X ).
+            \\\iff& ( x \in A \lor x \in (X \backslash A) \iff x \in X )
+            \\\iff& \big( x \in A \lor (x \in X \land x \notin A) \iff x \in X \big)
+            \\\iff& \big( (x \in A \lor x \in X) \land (x \in A \lor x \notin A) \iff x \in X \big)
+            \\\iff& ( x \in A \lor x \in X \iff x \in X ).
         \end{align*}
         But we also have $A \subseteq X$, and
         \begin{align*}
             & A \subseteq X
             \\\iff& (x \in A \iff x \in X)
-            \\\iff& ( x \in A \text{ or } x \in X \iff x \in X ). \qedhere
+            \\\iff& ( x \in A \lor x \in X \iff x \in X ). \qedhere
         \end{align*}
     \end{proof}
     \begin{proof}
@@ -122,11 +122,11 @@ Some axioms listed here are redundant: we only need one axiom between the single
         \begin{align*}
             & A \cap (X\backslash A) = \emptyset
             \\\iff& \big( x \in A \cap (X\backslash A) \iff x \in \emptyset \big) \text{ for any object $x$}
-            \\\iff& \big( x \in A \text{ and } x \in (X\backslash A) \iff x \in \emptyset \big) 
-            \\\iff& \big( x \in A \text{ and } (x \in X \text{ and } x \notin A) \iff x \in \emptyset \big)
-            \\\iff& \big( x \in X \text{ and } (x \in A \text{ and } x \notin A) \iff x \in \emptyset \big)
-            \\\iff& ( x \in X \text{ and } \text{False} \iff \text{False} )
-            \\\iff& (\text{False} \iff \text{False}),
+            \\\iff& \big( x \in A \land x \in (X\backslash A) \iff x \in \emptyset \big) 
+            \\\iff& \big( x \in A \land (x \in X \land x \notin A) \iff x \in \emptyset \big)
+            \\\iff& \big( x \in X \land (x \in A \land x \notin A) \iff x \in \emptyset \big)
+            \\\iff& ( x \in X \land \bot \iff \bot )
+            \\\iff& (\bot \iff \bot),
         \end{align*}
         which is a true statement.
     \end{proof}
@@ -135,7 +135,58 @@ Some axioms listed here are redundant: we only need one axiom between the single
         \begin{align*}
             & X\backslash (A \cup B) = (X\backslash A) \cap (X\backslash B)
             \\\iff& \big(x \in X\backslash (A \cup B) \iff x \in (X\backslash A) \cap (X\backslash B) \big) \text{ for any object $x$}
-            \\\iff& 
+            \\\iff& \big(x \in X \land x \notin A \cup B \iff x \in (X\backslash A) \land x \in (X\backslash B) \big)
+            \\\iff& \big(x \in X \land \lnot (x \in A \lor x \in B) \iff (x \in X \land x \notin A) \land (x \in X \land x \notin B) \big)
+            \\\iff& \big(x \in X \land (x \notin A \land x \notin B) \iff (x \in X \land x \in X) \land (x \notin A \land x \notin B) \big)
+            \\\iff& \big(x \in X \land (x \notin A \land x \notin B) \iff x \in X \land (x \notin A \land x \notin B) \big). \qedhere
+        \end{align*}
+    \end{proof}
+    \begin{proof}
+        \begin{align*}
+            & X\backslash (A \cap B) = (X\backslash A) \cup (X\backslash B)
+            \\\iff& \big(x \in X\backslash (A \cap B) \iff x \in (X\backslash A) \cup (X\backslash B) \big) \text{ for any object $x$}
+            \\\iff& \big(x \in X \land x \notin A \cap B \iff x \in (X\backslash A) \lor x \in (X\backslash B) \big)
+            \\\iff& \big(x \in X \land \lnot (x \in A \land x \in B) \iff (x \in X \land x \notin A) \lor (x \in X \land x \notin B) \big)
+            \\\iff& \big(x \in X \land (x \notin A \lor x \notin B) \iff (x \in X \land x \notin A) \lor (x \in X \land x \notin B) \big)
+            \\\iff& \big( (x \in X \land x \notin A) \lor (x \in X \land x \notin B) \\&\qquad\iff (x \in X \land x \notin A) \lor (x \in X \land x \notin B) \big). \qedhere
         \end{align*}
     \end{proof}
 \end{enumerate}
+
+\paragraph{Exercise 3.1.7.}
+\begin{proof}
+    We shall just prove the last implication. 
+    
+    (1) We have $A\subseteq C$ and $B \subseteq C$, then for any object $x$, \[(x \in A \implies x\in C) \land (x \in B \implies x\in C).\] For any object $y\in A\cup B$, it is true that either $y\in A$ or $y\in B$. We discuss the two cases: if $y\in A$, then $y\in C$; if $y\in B$, then $y\in C$. Thus, \[\forall y \in A \cup B : y \in C,\] then $A \cup B \subseteq C$.
+
+    (2) We have $A \cup B \subseteq C$, then for any object $x$, that $x\in A\cup B$ implies that $x\in C$. Furthermore, if either $x\in A$ or $x\in B$, then $x\in A\cup B$. For the sake of contradiction, suppose that one of $A$ and $B$ is not a subset of $C$. Without loss of generality, let $A \nsubseteq C $, then there exists some $y\in A$ such that $y\notin C$. But since $y\in A$, $x\in A\cup B$, which implies that $y \in C$, a contradiction.
+\end{proof}
+
+\paragraph{Exercise 3.1.8. (*Absorption laws)}
+\begin{proof}
+    \begin{align*}
+        & A \cap (A \cup B) = A
+        \\\iff& \big( x \in A \land x \in (A \cup B) \iff x \in A \big) \text{ for any object $x$}
+        \\\iff& \big( x \in A \land (x \in A \lor x \in B) \iff x \in A \big)
+        % \\\iff& \big( (x\in A \land x\in A) \lor (x\in A \land x\in B) \iff x \in A \big)
+        % \\\iff& \big( x\in A \lor (x\in A \land x\in B) \iff x \in A \big)
+        % \\\iff& \big( (x\in A \lor x\in A) \land (x\in A \lor x\in B) \iff x \in A \big)
+        \\\iff& \bigg( \Big(x \in A \lor \big(x\in B \land \lnot (x \in B) \big) \Big) \land (x \in A \lor x \in B) \iff x \in A \bigg)
+        \\\iff& \Big( (x\in A \lor x \in B) \land \big( x\in A \lor \lnot(x \in B) \big) \land (x\in A \lor x \in B) \iff x \in A \Big)
+        \\\iff& \Big( (x\in A \lor x \in B) \land \big( x\in A \lor \lnot(x \in B) \big) \iff x \in A \Big)
+        \\\iff& \Big( x\in A \lor \big(x\in B \land \lnot(x\in B) \big) \iff x \in A \Big)
+        \\\iff& ( x\in A \iff x \in A ). \qedhere
+    \end{align*}
+\end{proof}
+\begin{proof}
+    \begin{align*}
+        & A \cup (A \cap B) = A
+        \\\iff& \big( x \in A \lor x \in (A \cap B) \iff x \in A \big) \text{ for any object $x$}
+        \\\iff& \big( x \in A \lor (x \in A \land x \in B) \iff x \in A \big)
+        \\\iff& \bigg( \Big(x \in A \land \big(x\in B \lor \lnot (x \in B) \big) \Big) \lor (x \in A \land x \in B) \iff x \in A \bigg)
+        \\\iff& \Big( (x\in A \land x \in B) \lor \big( x\in A \land \lnot(x \in B) \big) \lor (x\in A \land x \in B) \iff x \in A \Big)
+        \\\iff& \Big( (x\in A \land x \in B) \lor \big( x\in A \land \lnot(x \in B) \big) \iff x \in A \Big)
+        \\\iff& \Big( x\in A \land \big(x\in B \lor \lnot(x\in B) \big) \iff x \in A \Big)
+        \\\iff& ( x\in A \iff x \in A ). \qedhere
+    \end{align*}
+\end{proof}
