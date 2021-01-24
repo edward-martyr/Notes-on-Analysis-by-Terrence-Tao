@@ -11,10 +11,10 @@
     If $a$ is an object, then there exists a set $\set{a}$, such that for every object $y$, we have $y\in{a}$ if and only if $y=a$; we refer to $\set{a}$ as the singleton set whose element is $a$. Furthermore, if $a$ and $b$ are objects, then there exists a set $\set{a, b}$, such that for every object $y$, we have $y \in \set{a, b}$ if and only if $y = a$ or $y = b$; we refer to this set as the pair set formed by $a$ and $b$.
 \end{axiom}
 \begin{axiom}[Pairwise union]
-    Given any two sets $A$, $B$, there exists a set $A \cup B$ such that \[x\in A\cup B \iff (x\in A \lor x\in B).\]
+    Given any two sets $A$, $B$, there exists a set $A \cup B$ such that \[x\in A\cup B \iff (x\in A \text{ or } x\in B).\]
 \end{axiom}
 \begin{axiom}[Axiom of specification]
-    Let $A$ be a set, then for any object $y$, \[y\in \Set{x\in A | P(x)} \iff (y\in A \land P(y) \text{ is true}).\] 
+    Let $A$ be a set, then for any object $y$, \[y\in \Set{x\in A | P(x)} \iff (y\in A \text{ and } P(y) \text{ is true}).\] 
 \end{axiom}
 \begin{axiom}[Replacement]
     Let $A$ be a set. For any object $x \in A$, and any object $y$, suppose we have a statement $P(x,y)$ pertaining to $x$ and $y$, such that for each $x \in A$ there is at most one $y$ for which $P(x,y)$ is true. Then there exists a set $\Set{y | P (x, y) \text{ is true for some } x \in A}$, such that for any object $z$, \[z \in \Set{y | P(x,y)\text{ is true for some }x \in A} \iff P(x,z)\text{ is true for some }x \in A.\]
@@ -24,7 +24,7 @@
 \end{axiom}
 
 \subsubsection{Remarks}
-Some axioms listed here are redundant: we only need one axiom between the singleton sets and the pair sets axioms.
+Note that some axioms listed here are redundant: we only need one axiom between the singleton sets and the pair sets axioms; the axiom of specification is implied by the axiom of replacement.
 
 \subsection{Practices}
 \begin{quote}
@@ -189,4 +189,52 @@ Some axioms listed here are redundant: we only need one axiom between the single
         \\\iff& \Big( x\in A \land \big(x\in B \lor \lnot(x\in B) \big) \iff x \in A \Big)
         \\\iff& ( x\in A \iff x \in A ). \qedhere
     \end{align*}
+\end{proof}
+
+\paragraph{Exercise 3.1.9.}
+\begin{proof}
+    Without loss of generality, we only prove that $B = X \backslash A$. Because $A \cup B = X$, we have, for any object $x$, that if either $x\in A$ or $x\in B$, then $x\in X$. Thus, if $x\in B$, then $x\in X$. Furthermore, because $A \cap B = \emptyset$, we have that if both $x\in A$ and $x\in B$, then $x\in \emptyset$, which is false for all $x$. Therefore, $x\in A$ and $x\in B$ cannot both be true. Thus, if $x\in B$, then $x\notin A$. To summarise, for any $x\in B$, $x\in X$ and $x\notin A$.
+\end{proof}
+
+\paragraph{Exercise 3.1.10.}
+\begin{proof}
+    Firstly, we want to show that $(A\backslash B)\cap (A\cap B)=\emptyset$. It suffices to show that for any object $x$, \[x\in (A\backslash B) \land x \in (A\cap B) \iff x \in \emptyset.\] The left side 
+    \begin{align*}
+        & x\in (A\backslash B) \land x \in (A\cap B)
+        \\\iff& (x\in A \land x \notin B) \land (x\in A \land x\in B)
+        \\\iff& x\in A \land \lnot (x\in B) \land x\in B
+        \\\iff& \bot,
+    \end{align*}
+    and the right side is false by definition. Thus, $A\backslash B$ and $A\cap B$ are disjoint.
+
+    But $A\cap B = B\cap A$, so $B\backslash A$ and $A\cap B$ are disjoint likewise.
+
+    We then want to show that $(A\backslash B)\cap (B\backslash A)=\emptyset$. It suffices to show that for any object $x$, \[x\in (A\backslash B) \land x \in (B\backslash A) \iff x \in \emptyset.\] The left side
+    \begin{align*}
+        & x\in (A\backslash B) \land x \in (B \backslash A)
+        \\\iff& (x\in A \land x \notin B) \land (x\in B \land x\notin A)
+        \\\iff& x\in A \land \lnot(x \in A) \land x\in B \land \lnot(x \in B)
+        \\\iff& \bot,
+    \end{align*}
+    and the right side is false by definition. Thus, $A\backslash B$ and $B\backslash A$ are disjoint.
+
+    Lastly, we want to show that $(A\backslash B)\cup (A\cap B) \cup (B\backslash A) = A\cup B$. It suffices to show that for any object $x$, \[x\in (A\backslash B) \land x \in (A\cap B) \land x \in (B\backslash A) \iff x \in A \lor x\in B.\] The left side
+    \begin{allowdisplaybreaks}
+    \begin{align*}
+        & x\in (A\backslash B) \land x \in (A\cap B) \land x \in (B\backslash A) 
+        \\\iff& (x\in A \land x \notin B) \lor (x\in A \land x\in B) \lor (x\in B \land x\notin A)
+        \\\iff& (x \in A \land \lnot (x \in B)) \lor (x \in B \land \lnot (x \in A)) \lor (x\in A \land x\in B)
+        \\\iff& \Big( \big( (x \in A \lor \lnot (x \in A)) \land (\lnot (x \in B) \lor \lnot (x \in A)) \big) 
+            \\&\qquad \land \big( (x \in A \lor x \in B) \land (\lnot (x \in B) \lor x \in B) \big) \Big) \lor (x\in A \land x\in B)
+        \\\iff& \big((\lnot (x \in B) \lor \lnot (x \in A)) \land (x \in A \lor x \in B)\big) \lor (x\in A \land x\in B)
+        \\\iff& \big( \lnot ( x \in A \land x \in B) \land (x \in A \lor x \in B)\big) \lor (x\in A \land x\in B)
+        \\\iff& \big( \lnot (x \in A \land x \in B) \lor (x \in A \land x \in B) \big) \land \big( (x \in A \lor x \in B) \land (x \in A \lor x \in B) \big)
+        \\\iff& x \in A \lor x \in B. \qedhere
+    \end{align*}
+    \end{allowdisplaybreaks}
+\end{proof}
+
+\paragraph{Exercise 3.1.11. (*Axiom of replacement implies the axiom of specification)}
+\begin{proof}
+    Let $P(x)$ be a statement pertaining to $x$. Let $Q(x,y)$ be a statement pertaining to $x$ and $y$ such that $Q(x,y)$ is true if and only if $P(x)$ is true and $x=y$. According to the axiom of replacement, we have a set $\set{y | Q(x,y)\text{ is true for some }x \in A}$ such that \[z \in \Set{y | Q(x,y)\text{ is true for some }x \in A} \iff Q(x,z)\text{ is true for some }x \in A.\] The left side is true iff $z\in \set{x | P(x)\text{ is true for some }x \in A}$. The right side is true iff $P(x)$ is true for some $x \in A$. Then we have \[z\in \set{x | P(x)\text{ is true for some }x \in A} \iff P(x)\text{ is true for some }x \in A,\] which is the axiom of specification.
 \end{proof}
