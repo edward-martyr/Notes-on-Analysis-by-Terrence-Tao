@@ -5,16 +5,22 @@
     If $A$ is a set, then $A$ is also an object.
 \end{axiom}
 \begin{axiom}[Empty set]
-    There exists a set $\emptyset$, known as the empty set, which contains no elements, i.e., for every object $x$ we have $x \notin \emptyset$.
+    There exists a set $\emptyset$, such that for every object $x$ we have $x \notin \emptyset$.
 \end{axiom}
 \begin{axiom}[Singleton sets and pair sets]
-    If $a$ is an object, then there exists a set $\set{a}$ whose only element is $a$, i.e., for every object $y$, we have $y\in{a}$ if and only if $y=a$; we refer to $\set{a}$ as the singleton set whose element is $a$. Furthermore, if $a$ and $b$ are objects, then there exists a set $\set{a, b}$ whose only elements are $a$ and $b$; i.e., for every object $y$, we have $y \in \set{a, b}$ if and only if $y = a$ or $y = b$; we refer to this set as the pair set formed by $a$ and $b$.
+    If $a$ is an object, then there exists a set $\set{a}$, such that for every object $y$, we have $y\in{a}$ if and only if $y=a$; we refer to $\set{a}$ as the singleton set whose element is $a$. Furthermore, if $a$ and $b$ are objects, then there exists a set $\set{a, b}$, such that for every object $y$, we have $y \in \set{a, b}$ if and only if $y = a$ or $y = b$; we refer to this set as the pair set formed by $a$ and $b$.
 \end{axiom}
 \begin{axiom}[Pairwise union]
     Given any two sets $A$, $B$, there exists a set $A \cup B$ such that \[x\in A\cup B \iff (x\in A \text{ or } x\in B).\]
 \end{axiom}
 \begin{axiom}[Axiom of specification]
-    Let $A$ be a set, then for any object $y$, \[y\in \set{x\in A: P(x)} \iff (y\in A \text{ and } P(y) \text{ is true}).\] 
+    Let $A$ be a set, then for any object $y$, \[y\in \Set{x\in A | P(x)} \iff (y\in A \text{ and } P(y) \text{ is true}).\] 
+\end{axiom}
+\begin{axiom}[Replacement]
+    Let $A$ be a set. For any object $x \in A$, and any object $y$, suppose we have a statement $P(x,y)$ pertaining to $x$ and $y$, such that for each $x \in A$ there is at most one $y$ for which $P(x,y)$ is true. Then there exists a set $\Set{y | P (x, y) \text{ is true for some } x \in A}$, such that for any object $z$, \[z \in \Set{y | P(x,y)\text{ is true for some }x \in A} \iff P(x,z)\text{ is true for some }x \in A.\]
+\end{axiom}
+\begin{axiom}[Infinity]
+    There exists a set $\mathbf{N}$, whose elements are called natural numbers, as well as an object $0$ in $\mathbf{N}$, and an object $n\inc$ assigned to every natural number $n \in \mathbf{N}$, such that the Peano axioms (Axioms 2.1 -- 2.5) hold.
 \end{axiom}
 
 \subsubsection{Remarks}
@@ -25,7 +31,7 @@ Some axioms listed here are redundant: we only need one axiom between the single
     Note that there can only be one empty set; if there were two sets $\emptyset$ and $\emptyset'$ which were both empty, then by Definition 3.1.4 they would be equal to each other (why?).
 \end{quote}
 \begin{proof}
-    We shall prove that for every object $x \in \emptyset$ we have $x \in \emptyset'$, but this is vacuously true because for every object $x$ we have $x \notin \emptyset$. Likewise, it is vacuously true that for every object $x \in \emptyset'$ we have $x \in \emptyset$. Thus, $\emptyset = \emptyset'$.
+    We shall prove that for every object $x \in \emptyset$ we have $x \in \emptyset'$, but this is vacuously true because for any object $x$ we have $x \notin \emptyset$. Likewise, it is vacuously true that for every object $x \in \emptyset'$ we have $x \in \emptyset$. Thus, $\emptyset = \emptyset'$.
 \end{proof}
 
 \begin{quote}
@@ -34,3 +40,102 @@ Some axioms listed here are redundant: we only need one axiom between the single
 \begin{proof}
     $A=A'$ implies that for every object $x$, $x\in A$ iff $x\in A'$. Thus, \[(x\in A \text{ or } x\in B) \iff (x\in A' \text{ or } x\in B).\] This is equivalent to that \[x\in A\cup B \iff x\in A'\cup B,\] which implies that $A\cup B = A'\cup B$.
 \end{proof}
+
+\paragraph{Exercise 3.1.1. (*Equality of sets is an equivalent class)}
+\begin{proof}
+    Let $A$, $B$, $C$ be sets.
+    (Reflexive) For any $x \in A$, it is true that $x \in A$, so $A=A$.
+    (Symmetric) If $A=B$, then it is true that $\forall x \in A : x \in B$ and $\forall x \in B : x \in A$. Thus, $\forall x \in B : x \in A$ and $\forall x \in A : x \in B$, so $B=A$.
+    (Transitive) If $A=B$ and $B=C$, then ($\forall x \in A : x \in B$ and $\forall y \in B : y \in A$) and ($\forall x \in B : x \in C$ and $\forall y \in C : y \in B$) are true. Thus, $\forall x \in A : x \in B$, so $x\in C$ and $\forall y \in C : y \in B$, so $y \in A$. It implies that $A=C$.
+\end{proof}
+
+\paragraph{Exercise 3.1.2.}
+\begin{proof}
+    We only have to prove that $\emptyset \neq \set{\emptyset}$. This is because $\emptyset \in \set{\emptyset}$, but $\emptyset \notin \emptyset$ by definition.
+\end{proof}
+
+\paragraph{Exercise 3.1.3. (*The union operation)}
+\begin{proof}
+    By Axiom 3.4, we have \[x\in A\cup B \iff (x\in A \text{ or } x\in B)\] and \[x\in B\cup A \iff (x\in B \text{ or } x\in A),\] where \[(x\in A \text{ or } x\in B) \iff (x\in B \text{ or } x\in A).\] Thus, $x\in A\cup B$ iff $x\in B\cup A$, which implies that $A\cup B=B\cup A$.
+\end{proof}
+\begin{proof}
+    Because $x\in \emptyset$ is false for any $x$, we have \[(x\in A \text{ or } x\in A) \iff (x\in A \text{ or } x\in \emptyset) \iff (x\in \emptyset \text{ or } x\in A) \iff x\in A. \qedhere\]
+\end{proof}
+
+\paragraph{Exercise 3.1.4.}
+\begin{proof}
+    We have, for any object $x$, that \[ x\in A \implies x \in B \] and \[ x\in B \implies x \in A .\] Thus, $A=B$.
+\end{proof}
+\begin{proof}
+    We have, for any object $x$, that \[ x\in A \implies x \in B \] and \[ x\in B \implies x \in C , \] thus \[ x\in A \implies x \in C ,\] so $A\subseteq C$. Because $A\neq B$, it is true that either $\exists x\in A: x\notin B$ or $\exists x\in B: x\notin A$. But $\forall x\in A: x \in B$, so $\exists x\in B: x\notin A$. Therefore, there exists some $x\in B$ such that $x\in C$ and $x\notin A$, which implies that \[ x\in A \not\iff x\in C ,\] which means that $A\neq C$. Thus, $A\subsetneq C$.
+\end{proof}
+
+\paragraph{Exercise 3.1.5.}
+\begin{proof}
+    We have $A\subseteq B$ if and only if \[x\in A \implies x\in B.\] We also have 
+    \begin{align*}
+        A \cup B = B &\iff (x\in A \cup B \iff x \in B) \\
+        &\iff (x\in A \text{ or }x\in B \iff x \in B) \\
+        &\iff (x\in A \implies x\in B).
+    \end{align*}
+    We also have 
+    \begin{align*}
+        A \cap B = A &\iff (x\in A \cap B \iff x \in A) \\
+        &\iff (x\in A \text{ and }x\in B \iff x \in A) \\
+        &\iff (x\in A \implies x\in B).\qedhere
+    \end{align*}
+\end{proof}
+
+\paragraph{Exercise 3.1.6.}
+\begin{enumerate}\setcounter{enumi}{5}
+    \item (Distributivity).
+    \begin{proof}
+        \begin{align*}
+            &A \cap (B \cup C) = (A \cap B) \cup (A \cap C) 
+            \\\iff& \big(x\in A \cap (B \cup C) \iff x\in (A \cap B) \cup (A \cap C) \big) \text{ for any object $x$}
+            \\\iff& (x\in A \text{ and } x \in B \cup C \iff x \in A \cap B \text{ or } x \in A \cap C)
+            \\\iff& \big(x\in A \text{ and } (x \in B \text{ or } x \in C) \iff (x \in A \text{ and } x \in B) \text{ or } (x \in A \text{ and } x \in C) \big)
+            \\\iff& \big( (x \in A \text{ and } x \in B) \text{ or } (x \in A \text{ and } x \in C) 
+            \\ &\qquad\iff (x \in A \text{ and } x \in B) \text{ or } (x \in A \text{ and } x \in C) \big). \qedhere
+        \end{align*}
+    \end{proof}
+    \item (Partition).
+    \begin{proof}
+        We shall deduce what is required for $A \cup (X \backslash A) = X$ to be true.
+        \begin{align*}
+            & A \cup (X \backslash A) = X
+            \\\iff& \big( x \in A \cup (X \backslash A) \iff x \in X \big) \text{ for any object $x$}
+            \\\iff& ( x \in A \text{ or } x \in (X \backslash A) \iff x \in X )
+            \\\iff& \big( x \in A \text{ or } (x \in X \text{ and } x \notin A) \iff x \in X \big)
+            \\\iff& \big( (x \in A \text{ or } x \in X) \text{ and } (x \in A \text{ or } x \notin A) \iff x \in X \big)
+            \\\iff& ( x \in A \text{ or } x \in X \iff x \in X ).
+        \end{align*}
+        But we also have $A \subseteq X$, and
+        \begin{align*}
+            & A \subseteq X
+            \\\iff& (x \in A \iff x \in X)
+            \\\iff& ( x \in A \text{ or } x \in X \iff x \in X ). \qedhere
+        \end{align*}
+    \end{proof}
+    \begin{proof}
+        We shall deduce what is required for $A \cap (X\backslash A) = \emptyset$ to be true.
+        \begin{align*}
+            & A \cap (X\backslash A) = \emptyset
+            \\\iff& \big( x \in A \cap (X\backslash A) \iff x \in \emptyset \big) \text{ for any object $x$}
+            \\\iff& \big( x \in A \text{ and } x \in (X\backslash A) \iff x \in \emptyset \big) 
+            \\\iff& \big( x \in A \text{ and } (x \in X \text{ and } x \notin A) \iff x \in \emptyset \big)
+            \\\iff& \big( x \in X \text{ and } (x \in A \text{ and } x \notin A) \iff x \in \emptyset \big)
+            \\\iff& ( x \in X \text{ and } \text{False} \iff \text{False} )
+            \\\iff& (\text{False} \iff \text{False}),
+        \end{align*}
+        which is a true statement.
+    \end{proof}
+    \item (De Morgan laws).
+    \begin{proof}
+        \begin{align*}
+            & X\backslash (A \cup B) = (X\backslash A) \cap (X\backslash B)
+            \\\iff& \big(x \in X\backslash (A \cup B) \iff x \in (X\backslash A) \cap (X\backslash B) \big) \text{ for any object $x$}
+            \\\iff& 
+        \end{align*}
+    \end{proof}
+\end{enumerate}
