@@ -17,7 +17,7 @@
     Let $P(n)$ be any property pertaining to a natural number $n$. Suppose that $P(0)$ is true, and suppose that whenever $P(n)$ is true, $P(n\inc)$ is also true. Then $P(n)$ is true for every natural number $n$.
 \end{axiom}
 \begin{definition}[Addition of natural numbers]
-    Let $m$ be a natural number. To add zero to $m$, we define $0 + m := m$. Now suppose inductively that we have defined how to add $n$ to $m$. Then we can add $n\inc$ to m by defining $(n\inc) + m := (n + m)\inc$.
+    Let $m$ be a natural number. To add zero to $m$, we define $0 + m \coloneq m$. Now suppose inductively that we have defined how to add $n$ to $m$. Then we can add $n\inc$ to m by defining $(n\inc) + m \coloneq (n + m)\inc$.
 \end{definition}
 \begin{definition}[Ordering of the natural numbers]
     Let $n$ and $m$ be natural numbers. We say that $n$ is greater than or equal to $m$, and write $n \geq m$ or $m \leq n$, iff we have $n = m + a$ for some natural number $a$. We say that $n$ is strictly greater than $m$, and write $n > m$ or $m < n$, iff $n \geq m$ and $n \neq m$.
@@ -98,7 +98,7 @@ The right side
     \item $a<b$ if and only if $b=a+d$ for some positive number $d$.
 \begin{proof}
     We only have to prove that $a\inc \leq b$ if and only if $b=a+d$ for some positive number $d$ by (e).
-    (1) If $a\inc \leq b$, then $a\inc + m = b$ for some natural number $m$. Therefore, $a + d = b$, where we let $d:=m\inc$. Suppose for the sake of contradiction that d is not positive, which means that $d=0$, which contradicts that $0$ is not the successor of any natural number. Thus, d is a positive natural number.
+    (1) If $a\inc \leq b$, then $a\inc + m = b$ for some natural number $m$. Therefore, $a + d = b$, where we let $d\coloneq m\inc$. Suppose for the sake of contradiction that d is not positive, which means that $d=0$, which contradicts that $0$ is not the successor of any natural number. Thus, d is a positive natural number.
     (2) If $b=a+d$ for some positive number $d$, then $b=a+n\inc$ for some natural number $n$. It follows that $a\inc + n =b$, which implies that $a\inc \leq b$.
 \end{proof}
 \end{enumerate}
