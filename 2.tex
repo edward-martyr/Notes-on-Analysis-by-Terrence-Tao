@@ -51,7 +51,7 @@ Axiom 2.5 and the concept of the vacuous truth need further reflection.
     \end{align*}
 \end{proof}
 
-\paragraph{Exercise 2.2.1 (Addition is associative)} For any natural numbers $a,b,c$, we have $(a+b)+c=a+(b+c)$.
+\paragraph{Exercise 2.2.1 (Addition is associative).} For any natural numbers $a,b,c$, we have $(a+b)+c=a+(b+c)$.
 \begin{proof}
     We use induction on $b$. The base case $(a+0)+c=a+(0+c)$ follows as both sides equal $a+c$. Suppose inductively that $(a+b)+c=a+(b+c)$. We have to prove that $[a+(b\inc)]+c=a+[(b\inc)+c]$. The left side 
 \begin{align*}
@@ -66,13 +66,13 @@ The right side
     which is equal to the left side by the inductive hypothesis.
 \end{proof}
 
-\paragraph{Exercise 2.2.2} Let $a$ be a positive number. Then there exists exactly one natural number $b$ such that $b\inc = a$.
+\paragraph{Exercise 2.2.2.} Let $a$ be a positive number. Then there exists exactly one natural number $b$ such that $b\inc = a$.
 \begin{proof}
     (Existence) We use induction on $a$. The base case follows as $0$ is not a positive number. Suppose inductively that $b\inc = a$. Then $(b\inc)\inc = a\inc$, where $b\inc$ is a natural number.
     (Uniqueness) Suppose for the sake of contradiction that $b$ and $c$ are different natural numbers such that $b\inc = a$ and $c\inc =a$. Because $b \neq c$, $b\inc \neq c\inc$. There is a contradiction that $b\inc = c\inc$.
 \end{proof}
 
-\paragraph{Exercise 2.2.3 (Basic properties of order for natural numbers)} Let $a, b, c$ be natural numbers. Then
+\paragraph{Exercise 2.2.3 (Basic properties of order for natural numbers).} Let $a, b, c$ be natural numbers. Then
 \begin{enumerate}
     \item (Order is reflexive) $a \geq a$.
 \begin{proof}
@@ -117,7 +117,7 @@ The right side
     $a=b+m$ for some $m$. Then $a\inc=a+1=b+m+1=b+m\inc$. Therefore $a\inc >b$.
 \end{proof}
 
-\paragraph{Exercise 2.2.5. (Strong principle of induction)} Let $m_0$ be a natural number, and let $P(m)$ be a property pertaining to an arbitrary natural number $m$. Suppose that for each $m \geq m_0$, we have the following implication: if $P(m')$ is true for all natural numbers $m_0 \leq m' < m$, then $P(m)$ is also true. (In particular, this means that $P(m_0)$ is true, since in this case the hypothesis is vacuous.) Then we can conclude that $P(m)$ is true for all natural numbers $m \geq m_0$.\footnote{Done with reference to \href{https://zhuanlan.zhihu.com/p/70295136}{Proposition 2.2.14 Strong principle of induction}.}
+\paragraph{Exercise 2.2.5 (Strong principle of induction).} Let $m_0$ be a natural number, and let $P(m)$ be a property pertaining to an arbitrary natural number $m$. Suppose that for each $m \geq m_0$, we have the following implication: if $P(m')$ is true for all natural numbers $m_0 \leq m' < m$, then $P(m)$ is also true. (In particular, this means that $P(m_0)$ is true, since in this case the hypothesis is vacuous.) Then we can conclude that $P(m)$ is true for all natural numbers $m \geq m_0$.\footnote{Done with reference to \href{https://zhuanlan.zhihu.com/p/70295136}{Proposition 2.2.14 Strong principle of induction}.}
 \begin{proof}
     Define $Q(m)$ to be the property for any arbitrary natural number $m$ that $P(m')$ is true for all $m_0 \leq m' < m$. For each $m \geq m_0$, if $Q(m)$ is true, $P(m)$ is also true.
 
@@ -157,20 +157,20 @@ The right side
     Because $P(l\inc)$ is true, $P(l)$ is true from the inductive hypothesis. Thus, $P(m)$ is true for all natural numbers $m<l\inc$. Combining with that $P(l\inc)$ is true, $P(m)$ is true for all natural numbers $m \leq l\inc$.
 \end{proof}
 
-\paragraph{Exercise 2.3.1. (Multiplication is commutative)}
+\paragraph{Exercise 2.3.1 (Multiplication is commutative).}
 \begin{proof}
     We use induction on $n$. The base case is $0\times m=m\times 0$. The left side equals $0$. We use another induction on $m$ to show that the right side also equals $0$. The base case $0\times 0=0$ by definition. Suppose inductively that $k\times 0 =0$ for some $k$. Then $(k\inc)\times 0=k\times 0+0=0+0=0$. Thus, the second induction is closed; the base case of the first induction is true.
 
     We suppose inductively that $0\times l = l \times 0$ for some $l$. Thus, $l\times 0=0$. Likewise, $(l\inc)\times 0 = 0$. Because $0\times (l\inc)$, $0\times (l\inc) = (l\inc) \times 0$.
 \end{proof}
 
-\paragraph{Exercise 2.3.2. (Positive natural numbers have no zero divisors)}
+\paragraph{Exercise 2.3.2 (Positive natural numbers have no zero divisors).}
 \begin{proof}
     (1) If one of $n,m$ is equal to $0$, then, without loss of generality, we let $m=0$, so $nm=n0=0$.
     (2) If $nm=0$, we suppose for the sake of contradiction that none of $n,m$ is $0$. That is, $n=l\inc$ and $m=k\inc$ for some natural numbers $l,k$. $nm=(l\inc)(k\inc)=k(l\inc)+(l\inc)=0$. Thus, $l\inc=0$, which is a contradiction.
 \end{proof}
 
-\paragraph{Exercise 2.3.3. (Multiplication is associative)}
+\paragraph{Exercise 2.3.3 (Multiplication is associative).}
 \begin{proof}
     We use induction on $b$. The base case $(a0)c=a(0c)$ holds as both sides equal $0$. We suppose inductively that $(ab)c=a(bc)$, and need to prove that $(a(b\inc))c=a((b\inc)c)$. The left side equals $(ab+a)c=abc+ac$; the right side equals $a(bc+c)=abc+ac$.
 \end{proof}
@@ -180,7 +180,7 @@ The right side
     The left side equals $(a+b)(a+b)=(a+b)a+(a+b)b=aa+ba+ab+bb$. The right side equals $aa+ab+ab+bb$.
 \end{proof}
 
-\paragraph{Exercise 2.3.5. (Euclidean algorithm)} Let $n$ be a natural number, and let $q$ be a positive number. Then there exist natural numbers $m,r$ such that $0 \leq r < q$ and $n = mq + r$.
+\paragraph{Exercise 2.3.5 (Euclidean algorithm).} Let $n$ be a natural number, and let $q$ be a positive number. Then there exist natural numbers $m,r$ such that $0 \leq r < q$ and $n = mq + r$.
 \begin{proof}
     We use induction on $n$. The base case $n=0$ holds as we can find $m=0$, $r=0$ such that $0=0q+0$. We suppose inductively that $n = mq + r$, and want to prove that $n\inc=m'q+r'$ for some $m',r'$. From the inductive hypothesis, $n\inc=mq+r\inc$. We discuss the cases
     \begin{enumerate}[label=(\arabic*)]
