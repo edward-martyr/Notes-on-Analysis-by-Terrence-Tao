@@ -291,3 +291,66 @@ Note that some axioms listed here are redundant: we only need one axiom between 
     
     When $f$ is a bijection, $f$ is defined by $f:\emptyset\to\emptyset$.
 \end{proof}
+
+\paragraph{Exercise 3.3.4.}
+\begin{proof}
+    Because $g$ is injective, we have for any $y,y'\in Y$ that \[ g(y)=g(y') \implies y=y' .\] But $g\circ f=g\circ \tilde{f}$, so we have for any $x\in X$ that $ g(f(x)) = g(\tilde{f}(x))$, which implies that $f(x) = \tilde{f}(x)$, which means that $f=\tilde{f}$. 
+
+    % If $g$ is not injective, then for some $y,y'\in Y$, \[ g(y)=g(y') \land y\neq y'.\] But $g\circ f=g\circ \tilde{f}$, so we have for any $x\in X$ that $ g(f(x)) = g(\tilde{f}(x))$, which implies that it can be the case that for some $f(x),\tilde{f}(x)\in Y$, $f(x) \neq \tilde{f}(x)$. So it can be the case that $f\neq \tilde{f}$.
+
+    If $g$ is not injective, we construct a counterexample to show that the statement no longer holds. Let $X=\set{0}$, $Y=\set{0,1}$ and $Z=\set{0}$; let $f(0)\coloneq{0}$; let $\tilde{f}(0)\coloneq{1}$; let $g(0)\coloneq{0}$ and $g(1)\coloneq{0}$. Then $g\circ f(0)=g\circ \tilde{f}(0)=0$. Thus, $g\circ f = g\circ \tilde{f}$. But $f\neq \tilde{f}$.
+\end{proof}
+\begin{proof}
+    Because $f$ is surjective, we have for any $y\in Y$ that \[ \exists x\in X : f(x)=y .\] But $g\circ f=\tilde{g}\circ f$, so we have for any $x\in X$ that $g(f(x))=\tilde{g}(f(x))$. Then, for any $y\in Y$, we have that for any $x\in X$ that $g(f(x))=\tilde{g}(f(x))$, which implies that for any $y\in Y$ we have that $g(y)=\tilde{g}(y)$. Thus, $g = \tilde{g}$.
+
+    % If $f$ is not surjective, we have for some $y\in Y$ that \[ \not\exists x\in X : f(x)=y .\] But $g\circ f=\tilde{g}\circ f$, so we have for any $x\in X$ that $g(f(x))=\tilde{g}(f(x))$. Then, for some $y\in Y$, we have that for any $x\in X$ that $g(f(x))=\tilde{g}(f(x))$, which implies that for some $y\in Y$, there does not exist any $x\in X$ such that $g(y)=\tilde{g}(y)$. Thus, we cannot verify that $g = \tilde{g}$.
+
+    If $f$ is not surjective, we construct a counterexample to show that the statement no longer holds. Let $X=\set{0}$, $Y=\set{0,1}$ and $Z=\set{0,1}$; let $f(0)\coloneq{0}$; let $g(0)\coloneq{0}$ and $g(1)\coloneq{0}$; let $\tilde{g}(0)\coloneq{0}$ and $\tilde{g}(1)\coloneq{1}$. Then $g\circ f(0)=\tilde{g}\circ {f}(0)=0$. Thus, $g\circ f = g\circ \tilde{f}$. But $g\neq \tilde{g}$.
+\end{proof}
+
+\paragraph{Exercise 3.3.5.}
+\begin{proof}
+    For any $x,x'\in X$, we have that \[ g(f(x))=g(f(x')) \implies x = x' .\] If $f(x)=f(x')$, then $g(f(x))=g(f(x'))$, which implies that $x=x'$. Thus, $f$ is injective. 
+    
+    We construct a counterexample to show that $g$ is not necessarily injective. Let $f:\set{0}\to\set{0,1}$ be defined by $f(0)\coloneq{0}$; let $g:\set{0,1}\to\set{0}$ be defined by $g(0)\coloneq{0}$ and $g(1)\coloneq{0}$. Then $g\circ f$ is clearly injective, but $g$ is not injective.
+\end{proof}
+\begin{proof}
+    For any $z\in Z$, we have that \[ \exists x\in X : g(f(x))=z .\] Because $f(x)\in Y$, it is equivalent to say that \[ \exists f(x)\in Y : g(f(x))=z .\] Thus, $g$ is surjective.
+
+    We construct a counterexample to show that $f$ is not necessarily surjective. Let $f:\set{0}\to\set{0,1}$ be defined by $f(0)\coloneq{0}$; let $g:\set{0,1}\to\set{0}$ be defined by $g(0)\coloneq{0}$ and $g(1)\coloneq{0}$. Then $g\circ f$ is clearly surjective, but $f$ is not surjective.
+\end{proof}
+
+\paragraph{Exercise 3.3.6.}
+\begin{proof}
+    By definition, for all $y\in Y$, $f(x)=y$, where $x$ is denoted $f^{-1}(y)$, so $f(f^{-1}(y))=y$. Because for all $x\in X$, $f(x)\in Y$, we also have $f(f^{-1}(f(x)))=f(x)$. Since $f$ is injective, then $f^{-1}(f(x))=x$ for all $x\in X$.
+
+    For any $y,y'\in Y$, \[f^{-1}(y)=f^{-1}(y') \implies f(f^{-1}(y))=f(f^{-1}(y'))\implies y=y',\] so $f^{-1}$ is injective. We have that $f(x)\in Y$, and that for any $x\in X$, $f^{-1}(f(x)) = x$, which means that for any $x\in X$, $\exists y\in Y : f^{-1}(y)=x$, so $f^{-1}$ is surjective. Therefore, $f^{-1}$ is invertible.
+
+    Denote the inverse of $f^{-1}$ by $g$. For all $x\in X$, $f^{-1}(g(x))=x$. We also have, for all $x\in X$ that $f^{-1}(f(x))=x$. Because $f^{-1}$ is surjective, for all $x\in X$, $g(x)=f(x)$. Thus, $g=f$.
+\end{proof}
+
+\paragraph{Exercise 3.3.7.}
+\begin{proof}
+    For all $y\in Y$, $f(f^{-1}(y))=y$. Because $g^{-1}(z)\in Y$, for all $z\in Z$, $f(f^{-1}(g^{-1}(z)))=g^{-1}(z)$. But for all $z\in Z$, $g(g^{-1}(z))=z$, therefore $g(f(f^{-1}(g^{-1}(z))))=z$, which can be rewritten as $(g\circ f)(f^{-1}\circ g^{-1})(z)=z$. Thus, $f^{-1}\circ g^{-1}$ is the inverse of $g\circ f$.
+\end{proof}
+
+\paragraph{Exercise 3.3.8.}
+\begin{enumerate}
+    \item 
+    \begin{proof}
+        We have $x\in X \implies x\in Y$. For every $x\in X$, $\iota_{Y\to Z}\circ\iota_{X\to Y}(x)=\iota_{Y\to Z}(x)=x$. For every $x\in X$, $\iota_{X\to Z}(x)=x$. Furthermore, $\iota_{Y\to Z}\circ\iota_{X\to Y}$ and $\iota_{X\to Z}$ are both defined on $X\to Z$, so the two are equal.
+    \end{proof}
+    \item 
+    \begin{proof}
+        We have $f(x)\in B$. For every $x\in A$, $f(x)=f(x)$; for every $x\in A$, $f\circ \iota_{A\to A} (x) = f(\iota_{A\to A} (x)) = f(x) $; for every $x\in A$, $\iota_{B\to B} \circ f(x) = \iota_{B\to B}(f(x)) = f(x) $. Furthermore, $f$, $f\circ \iota_{A\to A}$ and $\iota_{B\to B} \circ f$ are all defined on $A\to B$, so the three are equal.
+    \end{proof}
+    \item 
+    \begin{proof}
+        Obvious from the previous results.
+    \end{proof}
+    \item 
+    \begin{proof}
+        (Existence) We define \[ h(a) = \begin{cases} f(a) & a\in X, \\ g(a) & a\in Y. \end{cases} \] $h\circ \iota_{X\to X\cup Y}$ is defined on $X\to Z$. For every $x\in X$, $h\circ \iota_{X\to X\cup Y}(a)=f(a)$. Thus, $h\circ \iota_{X\to X\cup Y}=f$. Likewise, $h\circ \iota_{Y\to X\cup Y}=g$.
+        (Uniqueness) Now, suppose for the sake of contradiction that there exist two different functions $h$ and $\tilde{h}$ which satisfy $h\circ \iota_{X\to X\cup Y}=f$, $h\circ \iota_{Y\to X\cup Y}=g$, $\tilde{h}\circ \iota_{X\to X\cup Y}=f$ and $\tilde{h}\circ \iota_{Y\to X\cup Y}=g$. Then for some $a\in X\cup Y$, we have $h(a)\neq\tilde{h}(a)$. Because $X$ and $Y$ are disjoint, $a\in X\cup Y$ implies that either $a\in X$ or $a\in Y$. We discuss the two cases: If $a\in X$, we have $h\circ \iota_{X\to X\cup Y}(a)=f(a)$ and $\tilde{h}\circ \iota_{X\to X\cup Y}(a)=f(a)$. Thus, $h\circ \iota_{X\to X\cup Y}(a)=\tilde{h}\circ \iota_{X\to X\cup Y}(a)$, which is a contradiction. If $a\in Y$, then similarly there is a contradiction. Thus, there does not exist two different functions $h$ and $\tilde{h}$.
+    \end{proof}
+\end{enumerate}
